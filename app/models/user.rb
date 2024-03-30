@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   # profile, occupation, position は空であってはいけない
   validates :profile, :occupation, :position, presence: true
-  attr_accessor :profile
-  attr_accessor :occupation
+  
+
+  has_many :prototypes
+  has_many :comments
 end
