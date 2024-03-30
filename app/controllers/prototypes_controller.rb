@@ -30,7 +30,7 @@ class PrototypesController < ApplicationController
     if @prototype.update(prototype_params)
     redirect_to prototype_path(@prototype)
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end   
   end
   
@@ -45,7 +45,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to root_path
     else
-      render :new
+      render :new,status: :unprocessable_entity
     end
   end
 
@@ -58,7 +58,5 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.find(params[:id])
   end
 
-  def contributor_confirmation
-    redirect_to root_path unless current_user == @prototype.user
-  end
+  
 end
